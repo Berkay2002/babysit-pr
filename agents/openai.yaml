@@ -1,0 +1,4 @@
+interface:
+  display_name: "Babysit PR"
+  short_description: "Fix CI and review blockers until a PR is merge-ready"
+  default_prompt: "Use $babysit-pr to monitor this PR, fix CI failures and actionable review feedback, and prepare it for merge; merge only when explicitly authorized."
