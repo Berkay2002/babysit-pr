@@ -10,10 +10,10 @@
     {
       "name": "babysit-pr",
       "source": "./",
-      "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge.",
-      "version": "1.0.0",
+      "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Optionally record a demo video of the change and attach it to the PR.",
+      "version": "1.1.0",
       "category": "productivity",
-      "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab"]
+      "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "demo-video"]
     }
   ]
 }

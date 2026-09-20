@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "babysit-pr",
-  "version": "1.0.0",
-  "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Supports GitHub (gh) and GitLab (glab).",
+  "version": "1.1.0",
+  "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Optionally record a demo video of the change and attach it to the PR. Supports GitHub (gh) and GitLab (glab).",
   "author": {
     "name": "Berkay Orhan",
     "url": "https://github.com/Berkay2002"
@@ -10,7 +10,7 @@
   "homepage": "https://github.com/Berkay2002/babysit-pr",
   "repository": "https://github.com/Berkay2002/babysit-pr",
   "license": "MIT",
-  "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "code-review"],
+  "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "code-review", "demo-video"],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -22,7 +22,8 @@
         "capabilities": ["Read", "Write"],
         "websiteURL": "https://github.com/Berkay2002/babysit-pr",
         "defaultPrompt": [
-          "Use $babysit-pr to monitor this PR, fix CI failures and actionable review feedback, and prepare it for merge; merge only when explicitly authorized."
+          "Use $babysit-pr to monitor this PR, fix CI failures and actionable review feedback, and prepare it for merge; merge only when explicitly authorized.",
+          "Use $pr-demo to record a short video showing this PR's change working and attach it to the PR."
         ]
       }
     }

@@ -51,10 +51,12 @@ Refresh live state before declaring ready. Require all:
 
 Unknown mergeability or outstanding human action means readiness is unverified. Report the exact blocker.
 
+If a demo video was requested, run the `pr-demo` skill against the verified head once ready and before merging; a head change afterwards invalidates the demo.
+
 | State | Action |
 | --- | --- |
-| Ready, merge unauthorized | Report ready; stop. |
-| Ready, merge authorized | Recheck head/checks/reviews; merge using repository policy and expected-head guard. Changed head requires revalidation. Verify actual merged state. |
+| Ready, merge unauthorized | Post demo if requested; report ready; stop. |
+| Ready, merge authorized | Post demo if requested. Recheck head/checks/reviews; merge using repository policy and expected-head guard. Changed head requires revalidation. Verify actual merged state. |
 | Merged/closed externally or cancelled by user | Report outcome; stop. |
 | No further authorized progress | Report blocker; stop, unless configured to monitor the external dependency. |
 

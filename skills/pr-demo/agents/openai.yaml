@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Demo"
+  short_description: "Record a demo video of a PR's change and attach it"
+  default_prompt: "Use $pr-demo to record a short video showing this PR's change working and attach it to the PR."

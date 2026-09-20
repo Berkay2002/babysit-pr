@@ -1,12 +1,12 @@
 {
   "name": "babysit-pr",
-  "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Supports GitHub (gh) and GitLab (glab).",
-  "version": "1.0.0",
+  "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Optionally record a demo video of the change and attach it to the PR. Supports GitHub (gh) and GitLab (glab).",
+  "version": "1.1.0",
   "author": {
     "name": "Berkay Orhan"
   },
   "homepage": "https://github.com/Berkay2002/babysit-pr",
   "repository": "https://github.com/Berkay2002/babysit-pr",
   "license": "MIT",
-  "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "code-review"]
+  "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "code-review", "demo-video"]
 }
