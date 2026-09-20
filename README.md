@@ -1,4 +1,8 @@
-# Babysit PR
+# PR Toolkit
+
+Review, fix, and demonstrate pull request changes.
+
+The display name is **PR Toolkit** in Codex and Claude Code. The plugin ID remains `babysit-pr`, so existing installation commands and skill invocations continue to work.
 
 A plugin for [Claude Code](https://code.claude.com/docs/en/plugins) and [OpenAI Codex](https://developers.openai.com/plugins/build/plugins) that monitors a pull request or merge request, fixes scoped CI failures and actionable review feedback, and prepares it for merge. It merges only with explicit authorization.
 
@@ -39,7 +43,7 @@ codex plugin marketplace add Berkay2002/babysit-pr
 codex plugin add babysit-pr@berkay
 ```
 
-Then invoke the skills with `$babysit-pr` or `$pr-demo` in Codex, or pick **Babysit PR** from the Plugins Directory in the ChatGPT desktop app after adding the marketplace there.
+Then invoke the skills with `$babysit-pr` or `$pr-demo` in Codex, or pick **PR Toolkit** from the Plugins Directory in the ChatGPT desktop app after adding the marketplace there.
 
 ## Usage
 
