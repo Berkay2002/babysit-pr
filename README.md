@@ -2,6 +2,13 @@
   <img src="assets/pr-toolkit.png" alt="PR Toolkit logo: a branching path leading to a play symbol" width="160" />
   <h1>PR Toolkit</h1>
   <p><strong>Get the PR ready. Show the change working.</strong></p>
+  <p>Works with</p>
+  <p>
+    <a href="https://github.com/"><img src="assets/badges/github.svg" alt="GitHub" height="30" /></a>
+    <a href="https://gitlab.com/"><img src="assets/badges/gitlab.svg" alt="GitLab" height="30" /></a>
+    <a href="https://developers.openai.com/codex/"><img src="assets/badges/openai.svg" alt="Codex" height="30" /></a>
+    <a href="https://code.claude.com/docs/en/overview"><img src="assets/badges/claude.svg" alt="Claude Code" height="30" /></a>
+  </p>
   <p>Two skills for Codex and Claude Code, supporting GitHub and GitLab.</p>
   <p><a href="#install">Install</a> · <a href="#try-it">Try it</a> · <a href="#how-it-works">How it works</a> · <a href="#requirements">Requirements</a></p>
 </div>
