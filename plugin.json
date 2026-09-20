@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "babysit-pr",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Review, fix, and demonstrate pull request changes. Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Optionally record a demo video of the change and attach it to the PR. Supports GitHub (gh) and GitLab (glab).",
   "author": {
     "name": "Berkay Orhan",
@@ -15,6 +15,10 @@
     "com.openai": {
       "interface": {
         "displayName": "PR Toolkit",
+        "brandColor": "#0088FF",
+        "composerIcon": "./assets/pr-toolkit.png",
+        "logo": "./assets/pr-toolkit.png",
+        "logoDark": "./assets/pr-toolkit.png",
         "shortDescription": "Review, fix, and demonstrate pull request changes.",
         "longDescription": "Monitors a GitHub pull request or GitLab merge request, diagnoses failing CI and actionable review feedback, pushes scoped fixes, verifies readiness, and records demo videos of changes. Merges only when explicitly authorized.",
         "developerName": "Berkay Orhan",

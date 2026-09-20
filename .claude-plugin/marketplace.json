@@ -12,7 +12,7 @@
       "displayName": "PR Toolkit",
       "source": "./",
       "description": "Review, fix, and demonstrate pull request changes. Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Optionally record a demo video of the change and attach it to the PR.",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "category": "productivity",
       "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "demo-video"]
     }

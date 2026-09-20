@@ -1,98 +1,130 @@
-# PR Toolkit
+<div align="center">
+  <img src="assets/pr-toolkit.png" alt="PR Toolkit logo: a branching path leading to a play symbol" width="160" />
+  <h1>PR Toolkit</h1>
+  <p><strong>Get the PR ready. Show the change working.</strong></p>
+  <p>Two skills for Codex and Claude Code, supporting GitHub and GitLab.</p>
+  <p><a href="#install">Install</a> · <a href="#try-it">Try it</a> · <a href="#how-it-works">How it works</a> · <a href="#requirements">Requirements</a></p>
+</div>
 
-Review, fix, and demonstrate pull request changes.
+PR Toolkit helps your coding agent carry a pull request through failing checks and review feedback, then record a short demo of the result. Use either skill independently, or ask for a demo when the PR is ready.
 
-The display name is **PR Toolkit** in Codex and Claude Code. The plugin ID remains `babysit-pr`, so existing installation commands and skill invocations continue to work.
+| Skill | What you get |
+| --- | --- |
+| **[Babysit PR](skills/babysit-pr/SKILL.md)** | Scoped fixes, validation, and pushes, followed by a readiness report tied to the current PR head. |
+| **[PR Demo](skills/pr-demo/SKILL.md)** | A short recording of the change working, attached to the PR with the recorded commit and steps shown. |
 
-A plugin for [Claude Code](https://code.claude.com/docs/en/plugins) and [OpenAI Codex](https://developers.openai.com/plugins/build/plugins) that monitors a pull request or merge request, fixes scoped CI failures and actionable review feedback, and prepares it for merge. It merges only with explicit authorization.
+## Install
 
-A second skill, `pr-demo`, records a short screen video of the change working and attaches it to the PR. Ask for a demo on its own, or say "post a demo video when ready" while babysitting.
+### Codex
 
-Supports GitHub via `gh` and GitLab via `glab`. Install the CLI for your provider and authenticate before using the skills. Attaching videos on GitHub needs `gh` 2.99.0 or newer.
+Run in your terminal:
 
-## Install in Claude Code
-
-Add this repository as a marketplace, then install the plugin:
-
-```shell
-/plugin marketplace add Berkay2002/babysit-pr
-/plugin install babysit-pr@berkay
-```
-
-Then invoke the skill:
-
-```shell
-/babysit-pr:babysit-pr https://github.com/OWNER/REPO/pull/123
-/babysit-pr:pr-demo https://github.com/OWNER/REPO/pull/123
-```
-
-Claude also picks the skills up automatically when you ask it to babysit a PR or MR, or to record a demo of one.
-
-To try it without installing, run Claude Code with the plugin loaded from a local checkout:
-
-```shell
-claude --plugin-dir /path/to/babysit-pr
-```
-
-## Install in Codex
-
-Add this repository as a marketplace, then install the plugin:
-
-```shell
+```sh
 codex plugin marketplace add Berkay2002/babysit-pr
 codex plugin add babysit-pr@berkay
 ```
 
-Then invoke the skills with `$babysit-pr` or `$pr-demo` in Codex, or pick **PR Toolkit** from the Plugins Directory in the ChatGPT desktop app after adding the marketplace there.
+Start a new session and invoke `$babysit-pr` or `$pr-demo`. The plugin appears as **PR Toolkit** in the plugin directory.
 
-## Usage
+### Claude Code
 
-Ask the agent to babysit a PR or MR, optionally with a URL or number. It will:
-
-1. Resolve the provider, repository, branches, and current head from live data.
-2. Refresh CI, reviews, draft state, and mergeability.
-3. Diagnose failures from logs and review threads, separating real defects from transient failures and out-of-scope requests.
-4. Fix scoped defects, verify locally, and push.
-5. Repeat until the PR is verified ready, then report the exact blocker or readiness.
-
-Merge, force-push, reviewer messages, thread resolution, and draft or approval changes always require explicit authorization.
-
-### Demo videos
-
-Ask for a demo of a PR, or add "post a demo video when ready" to a babysit request. The agent will:
-
-1. Check out the PR head and read the title, body, and diff.
-2. Write a 3–6 step scenario showing the behavior the PR claims.
-3. Record it with Playwright (web apps) or [VHS](https://github.com/charmbracelet/vhs) (terminal apps), under 60 seconds.
-4. Attach the video to a PR comment via `gh pr comment --attach` or GitLab's uploads API, noting the recorded head SHA.
-
-Desktop and mobile apps are not supported; the skill reports that and stops. Requesting a demo authorizes that one comment and nothing else.
-
-## Layout
+Run inside Claude Code:
 
 ```text
-babysit-pr/
-├── plugin.json                       # Portable Agent Plugins manifest (Codex)
-├── .claude-plugin/
-│   ├── plugin.json                   # Claude Code plugin manifest
-│   └── marketplace.json              # Claude Code marketplace (this repo)
-├── .agents/plugins/marketplace.json  # Codex marketplace (this repo)
-└── skills/
-    ├── babysit-pr/
-    │   ├── SKILL.md                  # Monitor and fix until merge-ready
-    │   ├── agents/openai.yaml        # Codex skill presentation metadata
-    │   └── references/
-    │       ├── github.md             # gh commands and interpretation
-    │       └── gitlab.md             # glab commands and interpretation
-    └── pr-demo/
-        ├── SKILL.md                  # Record and attach a demo video
-        ├── agents/openai.yaml        # Codex skill presentation metadata
-        └── references/
-            ├── github.md             # gh --attach usage and limits
-            ├── gitlab.md             # GitLab uploads API and MR notes
-            └── recorders.md          # Playwright and VHS recipes
+/plugin marketplace add Berkay2002/babysit-pr
+/plugin install babysit-pr@berkay
 ```
 
-## License
+Restart Claude Code, then invoke `/babysit-pr:babysit-pr` or `/babysit-pr:pr-demo`.
 
-MIT. See [LICENSE](LICENSE).
+> [!NOTE]
+> The display name is **PR Toolkit**. The repository and plugin ID remain `babysit-pr`, so existing installation commands and skill invocations still work.
+
+## Try it
+
+Replace the example URL with your pull request or merge request. You can also refer to the current repository when the target is unambiguous.
+
+**Get a PR ready for review or merge**
+
+```text
+Babysit https://github.com/OWNER/REPO/pull/123.
+Fix CI failures and actionable review feedback, and tell me when it is ready.
+```
+
+**Show the change working**
+
+```text
+Record a short demo of https://github.com/OWNER/REPO/pull/123
+and attach the video to the PR.
+```
+
+**Use both skills together**
+
+```text
+Babysit https://github.com/OWNER/REPO/pull/123
+and post a demo video when it is ready. Leave merging to me.
+```
+
+To select a skill explicitly, prefix your request with `$babysit-pr` or `$pr-demo` in Codex, or the corresponding `/babysit-pr:...` command in Claude Code.
+
+## How it works
+
+### From failing checks to verified readiness
+
+Babysit PR refreshes the PR head, checks, reviews, and merge requirements. It diagnoses failures from logs and feedback, makes fixes within the PR's scope, runs relevant validation, and pushes the changes. It then checks the new head again.
+
+The result is either verified readiness or a specific blocker: pending checks, missing approvals, conflicts, unavailable access, or a decision that needs you. A green check alone does not establish readiness.
+
+### From a change to a recorded demo
+
+PR Demo reads the diff and builds a 3–6 step scenario, targeting a video of 60 seconds or less. It records web apps with Playwright or terminal apps with VHS, checks the recording, and posts it with the recorded head SHA and any omissions. If the PR head changes, the recording must be refreshed before posting.
+
+When combined, the demo runs against the verified head after babysitting finishes and before any authorized merge.
+
+> [!IMPORTANT]
+> Babysitting permits scoped fixes, tests, and pushes. Merging, force-pushing, and review actions require explicit authorization. A demo request authorizes one comment containing the recording; the demo skill does not modify the branch.
+
+## Requirements
+
+- **Host:** Codex or Claude Code with plugin support.
+- **Repository access:** Git and an authenticated [GitHub CLI](https://cli.github.com/) (`gh`) or [GitLab CLI](https://docs.gitlab.com/cli/) (`glab`), with permissions for the requested work.
+- **Project setup:** The dependencies and services needed to run the project's checks or demonstrate the change.
+- **Web demos:** Playwright and its browser runtime.
+- **Terminal demos:** [VHS](https://github.com/charmbracelet/vhs), `ttyd`, and `ffmpeg` on your PATH. Recording verification uses `ffprobe` and `ffmpeg`.
+- **GitHub video uploads:** `gh` 2.99.0 or newer with `gh pr comment --attach` support, as required by the demo skill.
+
+Desktop and native mobile app recording are not supported. Mobile web layouts can be recorded through Playwright. Missing tools or access are reported as blockers; the skill does not silently install global tools or upload to another host.
+
+Monitoring continues during the active run. Continuing after the session requires an automation facility supported by the host; installing the plugin alone does not create a background service.
+
+## Update
+
+**Codex — run in your terminal:**
+
+```sh
+codex plugin marketplace upgrade berkay
+codex plugin add babysit-pr@berkay
+```
+
+**Claude Code — run in your terminal:**
+
+```sh
+claude plugin marketplace update berkay
+claude plugin update babysit-pr@berkay
+```
+
+Restart the host or begin a new session to load the updated skills.
+
+## Explore the skills
+
+The plugin packages instructions and provider-specific references; it has no separate application server to deploy.
+
+- [Babysit PR workflow](skills/babysit-pr/SKILL.md) · [GitHub reference](skills/babysit-pr/references/github.md) · [GitLab reference](skills/babysit-pr/references/gitlab.md)
+- [PR Demo workflow](skills/pr-demo/SKILL.md) · [Recorder setup](skills/pr-demo/references/recorders.md) · [GitHub uploads](skills/pr-demo/references/github.md) · [GitLab uploads](skills/pr-demo/references/gitlab.md)
+
+To try a local checkout in Claude Code:
+
+```sh
+git clone https://github.com/Berkay2002/babysit-pr.git
+claude --plugin-dir ./babysit-pr
+```
