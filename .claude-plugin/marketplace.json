@@ -1,10 +1,10 @@
 {
-  "name": "babysit-pr",
+  "name": "berkay",
   "owner": {
     "name": "Berkay Orhan"
   },
   "metadata": {
-    "description": "Marketplace for the babysit-pr Claude Code plugin"
+    "description": "Berkay Orhan's Claude Code plugins"
   },
   "plugins": [
     {

@@ -10,7 +10,7 @@ Add this repository as a marketplace, then install the plugin:
 
 ```shell
 /plugin marketplace add Berkay2002/babysit-pr
-/plugin install babysit-pr@babysit-pr
+/plugin install babysit-pr@berkay
 ```
 
 Then invoke the skill:
@@ -33,7 +33,7 @@ Add this repository as a marketplace, then install the plugin:
 
 ```shell
 codex plugin marketplace add Berkay2002/babysit-pr
-codex plugin add babysit-pr@babysit-pr
+codex plugin add babysit-pr@berkay
 ```
 
 Then invoke the skill with `$babysit-pr` in Codex, or pick **Babysit PR** from the Plugins Directory in the ChatGPT desktop app after adding the marketplace there.
