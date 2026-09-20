@@ -1,0 +1,19 @@
+{
+  "name": "babysit-pr",
+  "owner": {
+    "name": "Berkay Orhan"
+  },
+  "metadata": {
+    "description": "Marketplace for the babysit-pr Claude Code plugin"
+  },
+  "plugins": [
+    {
+      "name": "babysit-pr",
+      "source": "./",
+      "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab"]
+    }
+  ]
+}

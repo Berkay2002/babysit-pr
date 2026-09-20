@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "babysit-pr",
+  "version": "1.0.0",
+  "description": "Monitor a pull request or merge request, fix scoped CI failures and review feedback, and prepare it for merge. Supports GitHub (gh) and GitLab (glab).",
+  "author": {
+    "name": "Berkay Orhan",
+    "url": "https://github.com/Berkay2002"
+  },
+  "homepage": "https://github.com/Berkay2002/babysit-pr",
+  "repository": "https://github.com/Berkay2002/babysit-pr",
+  "license": "MIT",
+  "keywords": ["pull-request", "merge-request", "ci", "github", "gitlab", "code-review"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Babysit PR",
+        "shortDescription": "Fix CI and review blockers until a PR is merge-ready",
+        "longDescription": "Monitors a GitHub pull request or GitLab merge request, diagnoses failing CI and actionable review feedback, pushes scoped fixes, verifies readiness, and merges only when explicitly authorized.",
+        "developerName": "Berkay Orhan",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://github.com/Berkay2002/babysit-pr",
+        "defaultPrompt": [
+          "Use $babysit-pr to monitor this PR, fix CI failures and actionable review feedback, and prepare it for merge; merge only when explicitly authorized."
+        ]
+      }
+    }
+  }
+}
